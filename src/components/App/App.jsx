@@ -30,12 +30,8 @@ const App = () => {
     setPage(prevPage => prevPage + 1);
   };
 
-  // const onGetLargeImage = newLargeImageUrl => {
-  //   setShowModal(newLargeImageUrl);
-  // };
-
   const onGetLargeImage = event => {
-    setShowModal({ modalImage: event });
+    setShowModal(event);
   };
 
   const toggleLoading = () => {
@@ -85,7 +81,7 @@ const App = () => {
 
       {showButton && <Button onClick={loadMoreImages} />}
 
-      {showModal && <Modal onClose={toggleModal} largeImage={showModal} />}
+      {showModal && <Modal onClose={toggleModal} modalImage={showModal} />}
     </Container>
   );
 };
