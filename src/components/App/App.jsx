@@ -77,7 +77,6 @@ const App = () => {
           showModal={toggleModal}
           images={images}
           onGetLargeImage={onGetLargeImage}
-          // largeImage={largeImage}
         />
       )}
 
