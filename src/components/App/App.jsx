@@ -15,6 +15,7 @@ const App = () => {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [largeImage, setLargeImage] = useState({});
 
   const handleFormSubmit = newImageName => {
     setImageName(newImageName);
@@ -31,7 +32,7 @@ const App = () => {
   };
 
   const onGetLargeImage = event => {
-    setShowModal(event);
+    setLargeImage(event);
   };
 
   const toggleLoading = () => {
@@ -76,12 +77,13 @@ const App = () => {
           showModal={toggleModal}
           images={images}
           onGetLargeImage={onGetLargeImage}
+          // largeImage={largeImage}
         />
       )}
 
       {showButton && <Button onClick={loadMoreImages} />}
 
-      {showModal && <Modal onClose={toggleModal} modalImage={showModal} />}
+      {showModal && <Modal onClose={toggleModal} modalImage={largeImage} />}
     </Container>
   );
 };
