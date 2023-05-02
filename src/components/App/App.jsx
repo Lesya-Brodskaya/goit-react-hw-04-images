@@ -60,7 +60,8 @@ const App = () => {
       })
       .catch(error => {
         console.log(error);
-      });
+      })
+      .finally(toggleLoading());
   }, [imageName, page]);
 
   const isNotLastPage = images.length !== totalImages;
