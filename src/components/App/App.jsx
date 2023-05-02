@@ -8,13 +8,6 @@ import ImageGallery from '../ImageGallery';
 import Modal from '../Modal';
 import { Container, Text } from './App.styled';
 
-// const Status = {
-//   IDLE: 'idle',
-//   PENDING: 'pending',
-//   RESOLVED: 'resolved',
-//   REJECTED: 'rejected',
-// };
-
 const App = () => {
   const [imageName, setImageName] = useState('');
   const [page, setPage] = useState(1);
@@ -37,8 +30,12 @@ const App = () => {
     setPage(prevPage => prevPage + 1);
   };
 
-  const onGetLargeImage = newLargeImageUrl => {
-    setShowModal(newLargeImageUrl);
+  // const onGetLargeImage = newLargeImageUrl => {
+  //   setShowModal(newLargeImageUrl);
+  // };
+
+  const onGetLargeImage = event => {
+    setShowModal({ modalImage: event });
   };
 
   const toggleLoading = () => {
@@ -51,12 +48,13 @@ const App = () => {
 
   useEffect(() => {
     if (imageName === '') {
-      toggleLoading();
+      return;
     }
+    toggleLoading();
 
     fetchImages(imageName, page)
-      .then(({ images, total }) => {
-        setImages(prevImages => [...prevImages, ...images.hits]);
+      .then(({ hits, total }) => {
+        setImages(prevImages => [...prevImages, ...hits]);
 
         setTotalImages(total);
       })
