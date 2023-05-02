@@ -39,7 +39,7 @@ const App = () => {
   };
 
   const toggleModal = () => {
-    setShowModal(null);
+    setShowModal(prevState => !prevState);
   };
 
   useEffect(() => {

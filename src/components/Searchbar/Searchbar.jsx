@@ -18,6 +18,7 @@ const Searchbar = ({ onSubmit }) => {
       return;
     }
     onSubmit(searchImage);
+    setSearchImage('');
   };
 
   return (
